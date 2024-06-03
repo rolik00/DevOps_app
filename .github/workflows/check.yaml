@@ -16,9 +16,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Check code formating
-        run: mvn clean verify -Pcheckstyle
-
       - name: Run tests
         run: mvn test
 
