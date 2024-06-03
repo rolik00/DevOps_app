@@ -17,6 +17,8 @@ jobs:
           distribution: 'adopt'
 
       - name: Run tests
+        file: test_factorial.java
+        dependencies: Factorial.java
         run: mvn test
 
       - name: Build code
