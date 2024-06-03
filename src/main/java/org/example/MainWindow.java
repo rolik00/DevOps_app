@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import java.math.BigInteger;
 
 public class MainWindow {
-    private static Color main_color = new Color(138, 103,172), title_color = new Color(233, 178, 127);
-    private static Font font = new Font(Font.SANS_SERIF, Font.PLAIN + Font.BOLD, 14);
+    private static final Color main_color = new Color(138, 103,172), title_color = new Color(233, 178, 127);
+    private static final Font font = new Font(Font.SANS_SERIF, Font.PLAIN + Font.BOLD, 14);
     public static JFrame create_main_window()
     {
         JFrame frame = new JFrame("Вычисление факториала");
