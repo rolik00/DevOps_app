@@ -17,7 +17,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Check code formating
-        run: mvn spotless:check
+        run: mvn clean verify -Pcheckstyle
 
       - name: Run tests
         run: mvn test
