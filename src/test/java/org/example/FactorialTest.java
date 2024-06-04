@@ -3,7 +3,7 @@ package org.example;
 import java.math.BigInteger;
 
 import static org.junit.Assert.assertEquals;
-public class test_factorial {
+public class FactorialTest {
     @org.junit.Test
     public void factorial_test()
     {
