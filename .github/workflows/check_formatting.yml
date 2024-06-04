@@ -11,4 +11,6 @@ jobs:
         with:
           java-version: 21
       - name: Check formatting
-        run: mvn spotless:check
+        uses: axel-op/googlejavaformat-action@v3
+        with:
+            args: "--set-exit-if-changed"
