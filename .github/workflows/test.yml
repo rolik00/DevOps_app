@@ -1,4 +1,4 @@
-name: tests for code
+name: Tests for code
 on: [push, pull_request]
 jobs:
   run_tests:
@@ -16,7 +16,5 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Run tests with Maven
+      - name: Run Unit tests with Maven
         run: mvn -B test --file pom.xml
-      - name: Run Unit-tests
-        run: mvn test
