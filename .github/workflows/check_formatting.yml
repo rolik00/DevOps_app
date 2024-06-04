@@ -1,23 +1,21 @@
-name: Run unit tests and format code
-on: push
+name: tests for code
+on: [push, pull_request]
 jobs:
-  test:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
+      - name: Checkout the repository
+        uses: actions/checkout@v2
       - name: Set up JDK 21
         uses: actions/setup-java@v1
         with:
-          java-version: '21'
-
+          java-version: 21
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
       - name: Build with Maven
         run: mvn clean install
