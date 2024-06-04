@@ -1,4 +1,4 @@
-name: Code Check
+name: Check code formatting
 
 on: [push, pull_request]
 
@@ -14,12 +14,4 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adopt'
-
-      - name: Run tests
-        file: test_factorial.java
-        dependencies: Factorial.java
-        run: mvn test
-
-      - name: Build code
-        run: mvn clean install
+          distribution: 'temurin'
