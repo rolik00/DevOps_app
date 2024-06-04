@@ -1,9 +1,9 @@
+package org.example;
 
-import org.example.Factorial;
 import java.math.BigInteger;
 
 import static org.junit.Assert.assertEquals;
-public class test_Factorial {
+public class test_factorial {
     @org.junit.Test
     public void factorial_test()
     {
