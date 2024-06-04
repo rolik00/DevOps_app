@@ -19,4 +19,11 @@ jobs:
       - name: Run tests with Maven
         run: mvn -B test --file pom.xml
       - name: Run Unit-tests
-        run: mvn test
+        run: mvn test surefire-report:report
+        env:
+          MAVEN_OPTS: "-Dsurefire.useFile=false -Dsurefire.reportName=TEST-report"
+      - name: Upload test report
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-report
+          path: target/site/surefire-report
