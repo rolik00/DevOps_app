@@ -3,10 +3,10 @@ package org.example;
 import java.math.BigInteger;
 
 import static org.junit.Assert.assertEquals;
+
 public class FactorialTest {
     @org.junit.Test
-    public void factorial_test()
-    {
+    public void factorial_test() {
         // тест 1
         int x1 = 1;
         BigInteger result1 = Factorial.getFactorial(x1);
