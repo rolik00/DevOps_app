@@ -10,6 +10,5 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 21
-      - uses: axel-op/googlejavaformat-action@v3
-        with:
-            args: "--set-exit-if-changed"
+      - name: Check formatting
+        run: mvn spotless:check
