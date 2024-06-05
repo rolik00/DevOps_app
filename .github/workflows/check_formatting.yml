@@ -10,3 +10,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 21
+      - uses: axel-op/googlejavaformat-action@v3
+        with:
+          args: "--skip-sorting-imports --replace"
