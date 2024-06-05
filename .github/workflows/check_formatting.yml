@@ -11,4 +11,4 @@ jobs:
         with:
           java-version: 21
       - name: Check formatting
-        run: mvn checkstyle:check
+        run: mvn checkstyle:check -Dcheckstyle.config.location=checkstyle.xml
