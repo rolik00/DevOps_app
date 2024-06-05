@@ -12,22 +12,27 @@ import javax.swing.JTextArea;
 public final class MainWindow {
   /** Поле, определяющее цвет фона окна. */
   private static final Color MAINCOLOR = new Color(138, 103, 172);
+
   /** Поле, определяющее цвет надписей у окна. */
   private static final Color TITLECOLOR = new Color(233, 178, 127);
+
   /** Поле, определяющее шрифт надписей. */
   @SuppressWarnings("checkstyle:LineLength")
   private static final Font MAINFONT = new Font(Font.SANS_SERIF, Font.PLAIN + Font.BOLD, 14);
+
   /** Поле, определяющее место, куда пользователь вводит число. */
   private static JTextArea field;
+
   /** Поле, определяющее ответ для полученного значения. */
   private static JLabel answer;
 
-  private MainWindow() { }
+  private MainWindow() {}
 
-  /** функция, создающая графический интерфейс.
-    *
-    * @return - возвращает окно экрана
-    */
+  /**
+   * функция, создающая графический интерфейс.
+   *
+   * @return - возвращает окно экрана
+   */
   public static JFrame createMainWindow() {
     final int frameWidth = 600;
     final int frameHeight = 400;
@@ -75,10 +80,11 @@ public final class MainWindow {
     return frame;
   }
 
-  /** функция, создающая кнопку для получения факториала введенного числа.
-    *
-    * @return - возвращает кнопку
-    */
+  /**
+   * функция, создающая кнопку для получения факториала введенного числа.
+   *
+   * @return - возвращает кнопку
+   */
   private static JButton createButton() {
     final int buttonX = 200;
     final int buttonY = 300;
@@ -88,12 +94,13 @@ public final class MainWindow {
     button.setSize(buttonWidth, buttonHeight);
     button.setFont(MAINFONT);
     button.setLocation(buttonX, buttonY);
-    button.addActionListener(e -> {
-      int x = Integer.parseInt(field.getText());
-      BigInteger factorial = Factorial.getFactorial(x);
-      String s = "Факториал числа " + x + " равен " + factorial;
-      answer.setText(s);
-    });
+    button.addActionListener(
+        e -> {
+          int x = Integer.parseInt(field.getText());
+          BigInteger factorial = Factorial.getFactorial(x);
+          String s = "Факториал числа " + x + " равен " + factorial;
+          answer.setText(s);
+        });
     return button;
   }
 }

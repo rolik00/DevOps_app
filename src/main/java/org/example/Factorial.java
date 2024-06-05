@@ -4,9 +4,10 @@ import java.math.BigInteger;
 
 /** класс, вычисляющий факториал числа. */
 public final class Factorial {
-  private  Factorial() { }
+  private Factorial() {}
 
-  /** функция, вычисляющая факториал числа.
+  /**
+   * функция, вычисляющая факториал числа.
    *
    * @param x - число, для которого ищется факториал
    * @return - возвращает факториал числа x
