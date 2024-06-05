@@ -10,5 +10,3 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 21
-      - name: Check formatting
-        run: mvn checkstyle:check

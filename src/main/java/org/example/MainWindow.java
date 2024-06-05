@@ -28,7 +28,6 @@ public final class MainWindow {
     *
     * @return - возвращает окно экрана
     */
-  @SuppressWarnings("checkstyle:LineLength")
   public static JFrame createMainWindow() {
     final int frameWidth = 600;
     final int frameHeight = 400;

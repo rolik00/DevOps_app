@@ -6,7 +6,9 @@ import java.math.BigInteger;
 
 /** класс, тестирующий функцию, вычисляющую факториал.*/
 public class FactorialTest {
-  /** функция, тестирующая корректность вычисление факториала в классе Factorial.*/
+  /** функция, тестирующая корректность вычисление факториала в классе Factorial.
+   *
+   */
   @org.junit.Test
   public void factorialTest() {
     // тест 1
