@@ -25,14 +25,27 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Generate tag
-      id: tag
+    - name: Generate Git Tag
+      id: generate_tag
       run: |
-        echo "Creating a new tag"
-        TAG_NAME=release-$(date +'%Y%m%d%H%M%S')
-        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
-        git tag $TAG_NAME
-        git push origin $TAG_NAME
+        VERSION_PREFIX="v"
+        VERSION_MAJOR_MINOR="1.0"
+        VERSION_PATCH=$(git tag --list "${VERSION_PREFIX}${VERSION_MAJOR_MINOR}.*" --sort=-version:refname | head -n 1 | grep -oE '[0-9]+$')
+        if [ -z "$VERSION_PATCH" ]; then
+          VERSION_PATCH=0
+        else
+          VERSION_PATCH=$((VERSION_PATCH + 1))
+        fi
+        NEW_TAG="${VERSION_PREFIX}${VERSION_MAJOR_MINOR}.${VERSION_PATCH}"
+        echo "Generated new tag: $NEW_TAG"
+        echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+
+    - name: Push Git Tag
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@users.noreply.github.com"
+        git tag $NEW_TAG
+        git push origin $NEW_TAG
 
     - name: Publish JAR to GitHub Releases
       uses: softprops/action-gh-release@v1
