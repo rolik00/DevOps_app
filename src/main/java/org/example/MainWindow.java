@@ -9,45 +9,68 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /** класс, создающий графический интерфейс программы. */
-public class MainWindow {
-  private static final Color main_color = new Color(138, 103, 172);
-  private static final Color title_color = new Color(233, 178, 127);
-  private static final Font font = new Font(Font.SANS_SERIF, Font.PLAIN + Font.BOLD, 14);
+public final class MainWindow {
+  /** Поле, определяющее цвет фона окна. */
+  private static final Color MAINCOLOR = new Color(138, 103, 172);
+  /** Поле, определяющее цвет надписей у окна. */
+  private static final Color TITLECOLOR = new Color(233, 178, 127);
+  /** Поле, определяющее шрифт надписей. */
+  @SuppressWarnings("checkstyle:LineLength")
+  private static final Font MAINFONT = new Font(Font.SANS_SERIF, Font.PLAIN + Font.BOLD, 14);
+  /** Поле, определяющее место, куда пользователь вводит число. */
   private static JTextArea field;
+  /** Поле, определяющее ответ для полученного значения. */
   private static JLabel answer;
+
+  private MainWindow() { }
 
   /** функция, создающая графический интерфейс.
     *
     * @return - возвращает окно экрана
     */
-  public static JFrame create_main_window() {
+  @SuppressWarnings("checkstyle:LineLength")
+  public static JFrame createMainWindow() {
+    final int frameWidth = 600;
+    final int frameHeight = 400;
     JFrame frame = new JFrame("Вычисление факториала");
-    frame.setSize(600, 400);
+    frame.setSize(frameWidth, frameHeight);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.getContentPane().setLayout(null);
-    frame.getContentPane().setBackground(main_color);
+    frame.getContentPane().setBackground(MAINCOLOR);
 
+    final int labelX = 50;
+    final int labelY = 50;
+    final int labelWidth = 500;
+    final int labelHeight = 40;
     JLabel label = new JLabel("Введите число, большее нуля, для вычисления его факториала");
-    label.setLocation(50, 50);
-    label.setSize(500, 40);
-    label.setForeground(title_color);
-    label.setFont(font);
+    label.setLocation(labelX, labelY);
+    label.setSize(labelWidth, labelHeight);
+    label.setForeground(TITLECOLOR);
+    label.setFont(MAINFONT);
     frame.add(label);
 
+    final int fieldX = 250;
+    final int fieldY = 100;
+    final int fieldWidth = 100;
+    final int fieldHeight = 30;
     field = new JTextArea();
-    field.setLocation(250, 100);
-    field.setSize(100, 30);
-    field.setFont(font);
+    field.setLocation(fieldX, fieldY);
+    field.setSize(fieldWidth, fieldHeight);
+    field.setFont(MAINFONT);
     frame.add(field);
 
+    final int answerX = 200;
+    final int answerY = 200;
+    final int answerWidth = 300;
+    final int answerHeight = 40;
     answer = new JLabel("");
-    answer.setFont(font);
-    answer.setForeground(title_color);
-    answer.setSize(300, 40);
-    answer.setLocation(200, 200);
+    answer.setFont(MAINFONT);
+    answer.setForeground(TITLECOLOR);
+    answer.setSize(answerWidth, answerHeight);
+    answer.setLocation(answerX, answerY);
     frame.add(answer);
 
-    JButton button = create_button();
+    JButton button = createButton();
     frame.add(button);
 
     return frame;
@@ -57,11 +80,15 @@ public class MainWindow {
     *
     * @return - возвращает кнопку
     */
-  private static JButton create_button() {
+  private static JButton createButton() {
+    final int buttonX = 200;
+    final int buttonY = 300;
+    final int buttonWidth = 200;
+    final int buttonHeight = 40;
     JButton button = new JButton("Получить ответ!");
-    button.setSize(200, 40);
-    button.setFont(font);
-    button.setLocation(200, 300);
+    button.setSize(buttonWidth, buttonHeight);
+    button.setFont(MAINFONT);
+    button.setLocation(buttonX, buttonY);
     button.addActionListener(e -> {
       int x = Integer.parseInt(field.getText());
       BigInteger factorial = Factorial.getFactorial(x);
