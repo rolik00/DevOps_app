@@ -1,50 +1,28 @@
-name: Build sample Java Maven project
- 
-on: [push, pull_request]
- 
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
 jobs:
-  compile:
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        java: [ 11, 12, 13 ]
-    name: Java ${{ matrix.java }} compile
-    steps:
-      - name: Checkout Source Code
-        uses: actions/checkout@v2
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-package: jdk
-          java-version: ${{ matrix.java }}
-      - name: Compile the Project
-        working-directory: github-actions-java-maven
-        run: mvn -B compile
- 
   build:
-    runs-on: ubuntu-20.04
-    needs: compile
-    name: Build the Maven Project
+    runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/cache@v2
-      with:
-        path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-        restore-keys: |
-          ${{ runner.os }}-maven-
+
     - name: Set up JDK 21
-      uses: actions/setup-java@v2
+      uses: actions/setup-java@v1
       with:
-          distribution: 'adopt'
-          java-version: '21'
-          java-package: jdk
-    - name: Build and test project
-      working-directory: github-actions-java-maven
-      run: mvn -B verify
-    - name: Upload Maven build artifact
+        java-version: 21
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: artifact.jar
-        path: github-actions-java-maven/target/github-actions-java-maven.jar
+        name: packaged-jar
+        path: target/*.jar
