@@ -2,9 +2,18 @@ package org.example;
 
 import java.math.BigInteger;
 
+/** класс, вычисляющий факториал числа. */
 public class Factorial {
-    public static BigInteger getFactorial(int f) {
-        if (f <= 1) return BigInteger.valueOf(1);
-        else return BigInteger.valueOf(f).multiply(getFactorial(f - 1));
+  /** функция, вычисляющая факториал числа.
+   *
+   * @param x - число, для которого ищется факториал
+   * @return - возвращает факториал числа x
+   */
+  public static BigInteger getFactorial(int x) {
+    if (x <= 1) {
+      return BigInteger.valueOf(1);
+    } else {
+      return BigInteger.valueOf(x).multiply(getFactorial(x - 1));
     }
+  }
 }
