@@ -1,6 +1,11 @@
 name: Docker Build and Push
 
 on:
+  workflow_run:
+    workflows: ["Build and release JAR"]
+    branches: [master]
+    types: 
+      - completed
   push:
     branches: [ master ]
   pull_request:
