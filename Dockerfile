@@ -1,4 +1,4 @@
-FROM xldevops/jdk21-lts
+FROM openjdk:21
 
 WORKDIR /home/user/DevOps_app
 
