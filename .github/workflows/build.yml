@@ -1,6 +1,11 @@
 name: Build and release JAR
 
 on:
+  workflow_run:
+    workflows: ["Check code formatting", "Tests for code"]
+    branches: [master]
+    types: 
+      - completed
   push:
     branches:
       - master
