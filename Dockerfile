@@ -1,9 +1,4 @@
 FROM openjdk:21
-
-WORKDIR /home/user/DevOps_app
-
-COPY . /home/user/DevOps_app
-
-RUN javac Main.java
-
-CMD ["java","Main"]
+ADD target/*.jar DevOps_app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","DevOps_app.jar"]
