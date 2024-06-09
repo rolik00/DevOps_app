@@ -1,4 +1,4 @@
 FROM openjdk:21
-ADD DevOps_app-1.0-SNAPSHOT.jar
+ADD COPY target/app.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","DevOps_app-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
